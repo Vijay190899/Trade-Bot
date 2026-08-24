@@ -1,0 +1,50 @@
+# ── Secrets ────────────────────────────────────────────
+.env
+*.key
+*.pem
+config/config_live.json
+config/*_secret*.json
+
+# ── Python ─────────────────────────────────────────────
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# ── Market data (regenerate via: freqtrade download-data) ──
+user_data/data/
+
+# ── Trained models & tensorboard (large, regenerable) ──
+user_data/models/
+user_data/backtest_results/
+user_data/hyperopt_results/
+user_data/plot/
+
+# ── Runtime state ──────────────────────────────────────
+user_data/logs/
+*.sqlite
+*.sqlite-journal
+*.log
+.tmp/
+
+# ── Local backups ──────────────────────────────────────
+*.bak
+*.v2
+*.orig
+
+# ── OS ─────────────────────────────────────────────────
+Thumbs.db
+.DS_Store
+
+# ── Build/pip caches ───────────────────────────────────
+.pip-cache/
+.cache/
+
+# ── Vendored third-party (install separately) ──────────
+talib-c/
+
+# ── SQLite journals & native binaries ──────────────────
+*.sqlite-shm
+*.sqlite-wal
+talib-c64/

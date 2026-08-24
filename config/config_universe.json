@@ -1,0 +1,30 @@
+{
+    "max_open_trades": 5,
+    "stake_currency": "USDT",
+    "stake_amount": "unlimited",
+    "tradable_balance_ratio": 0.99,
+    "fiat_display_currency": "USD",
+    "dry_run": true,
+    "dry_run_wallet": 1000,
+    "trading_mode": "spot",
+    "exchange": {
+        "name": "binance",
+        "key": "",
+        "secret": "",
+        "ccxt_config": {},
+        "ccxt_async_config": {},
+        "pair_whitelist": [
+            "BTC/USDT","ETH/USDT","BNB/USDT","XRP/USDT","ADA/USDT",
+            "SOL/USDT","DOGE/USDT","DOT/USDT","LTC/USDT","TRX/USDT",
+            "AVAX/USDT","LINK/USDT","ATOM/USDT","UNI/USDT","XLM/USDT",
+            "ETC/USDT","FIL/USDT","NEAR/USDT","ALGO/USDT","VET/USDT",
+            "ICP/USDT","AAVE/USDT","EOS/USDT","SAND/USDT","MANA/USDT",
+            "AXS/USDT","THETA/USDT","EGLD/USDT","GRT/USDT","CHZ/USDT"
+        ],
+        "pair_blacklist": []
+    },
+    "pairlists": [{"method": "StaticPairList"}],
+    "user_data_dir": ".//user_data",
+    "dataformat_ohlcv": "json",
+    "bot_name": "Qoherenz-Universe"
+}

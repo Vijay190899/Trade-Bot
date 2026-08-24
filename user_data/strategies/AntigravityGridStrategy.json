@@ -1,0 +1,36 @@
+{
+  "strategy_name": "AntigravityGridStrategy",
+  "params": {
+    "roi": {
+      "0": 0.015,
+      "30": 0.008,
+      "60": 0.005,
+      "180": 0.003,
+      "480": 0.0
+    },
+    "stoploss": {
+      "stoploss": -0.015
+    },
+    "trailing": {
+      "trailing_stop": true,
+      "trailing_stop_positive": 0.008,
+      "trailing_stop_positive_offset": 0.012,
+      "trailing_only_offset_is_reached": true
+    },
+    "max_open_trades": {
+      "max_open_trades": 1
+    },
+    "buy": {
+      "buy_bb_pos": 0.357,
+      "buy_rsi_ranging": 29,
+      "buy_rsi_trend": 48
+    },
+    "sell": {
+      "sell_bb_exit": 0.888,
+      "sell_rsi_exit": 62
+    },
+    "protection": {}
+  },
+  "ft_stratparam_v": 1,
+  "export_time": "2026-05-26 16:43:44.051654+00:00"
+}

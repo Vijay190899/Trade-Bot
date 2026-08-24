@@ -1,0 +1,19 @@
+# Core trading engine
+freqtrade==2025.6
+
+# Reinforcement learning
+stable-baselines3==2.8.0
+sb3-contrib==2.8.0
+gymnasium==1.2.3
+torch==2.6.0
+
+# Analysis / research pipeline
+numpy
+pandas
+tensorboard==2.20.0
+
+# Dashboard
+fastapi
+uvicorn
+httpx
+psutil

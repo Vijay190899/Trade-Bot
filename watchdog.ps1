@@ -131,6 +131,29 @@ elseif ($gridProcs.Count -gt 2) {
     Restart-Bot "Grid" "$venv\freqtrade.exe" $gridArgs $gPat $gExcl
 }
 
+# ---------------- Carry Engine (cash-and-carry dry-run, Gate F6 clock) ----
+# Pure simulation: holds no API keys and cannot place orders.
+$carryLog  = "$botRoot\user_data\logs\carry_run.log"
+$carryHb   = Get-LastHeartbeat $carryLog
+$carryProc = Get-CimInstance Win32_Process -Filter "Name='python.exe'" -ErrorAction SilentlyContinue |
+    Where-Object { $_.CommandLine -and $_.CommandLine -match 'carry_engine' }
+
+if (Test-Path "$botRoot\carry\STOP") {
+    Write-Log "[Carry] kill switch present - not starting"
+}
+elseif (-not $carryProc) {
+    Write-Log "[Carry] not running - starting"
+    Start-Process -FilePath "$venv\python.exe" -ArgumentList "`"$botRoot\carry\carry_engine.py`"" `
+                  -WorkingDirectory $botRoot -WindowStyle Hidden | Out-Null
+}
+elseif ($carryHb -eq $null -or ((Get-Date) - $carryHb).TotalMinutes -gt 15) {
+    Write-Log "[Carry] heartbeat stale (last: $carryHb) - restarting"
+    foreach ($p in @($carryProc)) { & taskkill.exe /PID $p.ProcessId /T /F 2>&1 | Out-Null }
+    Start-Sleep -Seconds 2
+    Start-Process -FilePath "$venv\python.exe" -ArgumentList "`"$botRoot\carry\carry_engine.py`"" `
+                  -WorkingDirectory $botRoot -WindowStyle Hidden | Out-Null
+}
+
 # ---------------- Dashboard ----------------
 # Checking "is something listening on the port" isn't enough - another app
 # (e.g. a Docker container) can grab the port and this would never notice.

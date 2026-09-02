@@ -48,3 +48,7 @@ talib-c/
 *.sqlite-shm
 *.sqlite-wal
 talib-c64/
+
+# ── Carry engine runtime state ─────────────────────────
+carry/carry_state.sqlite
+carry/STOP
